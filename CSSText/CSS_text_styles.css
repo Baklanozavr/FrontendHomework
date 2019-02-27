@@ -1,0 +1,34 @@
+body {
+    padding: 6px 10px;
+    background: #feeed6;
+    font: 12pt sans-serif;
+    color: #656565;
+}
+
+div {
+    margin-top: 10px;
+}
+
+p {
+    margin-top: 8px;
+}
+
+.CourseDescription p {
+    margin-top: 10px;
+    text-indent: 1em;
+    text-align: justify;
+}
+
+.CourseHeader {
+    text-transform: uppercase;
+    font-size: 1.8em;
+}
+
+.parStarter {
+    color: #378DB2;
+    font-weight: bold;
+}
+
+.oldPrice {
+    text-decoration: line-through;
+}
