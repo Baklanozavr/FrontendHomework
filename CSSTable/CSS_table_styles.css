@@ -1,0 +1,37 @@
+table {
+    text-align: left;
+    font: 130% "Open Sans";
+}
+
+thead {
+    background-color: #3498db;
+    color: white;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #eeeeee;
+    color: #1c1c1c
+}
+
+td,
+th {
+    height: 40px;
+    border: 2px solid #d5d5d5;
+    padding: 10px 10px 0 10px;
+}
+
+th:nth-child(1),
+th:nth-child(2) {
+    min-width: 152px;
+    max-width: 152px;
+}
+
+th:nth-child(3) {
+    min-width: 285px;
+    max-width: 285px;
+}
+
+th:nth-child(4) {
+    min-width: 180px;
+    max-width: 180px;
+}
