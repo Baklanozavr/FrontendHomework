@@ -1,37 +1,39 @@
-table {
+.table_of_staff {
     text-align: left;
-    font: 130% "Open Sans";
+    font: 130% "Open Sans", sans-serif;
 }
 
-thead {
+.table_of_staff thead {
     background-color: #3498db;
     color: white;
+    font-weight: bold;
+    font-size: 95%;
 }
 
-tbody tr:nth-child(odd) {
+.table_of_staff tbody tr:nth-child(odd) {
     background-color: #eeeeee;
     color: #1c1c1c
 }
 
-td,
-th {
-    height: 40px;
+.table_of_staff th,
+.table_of_staff td {
     border: 2px solid #d5d5d5;
-    padding: 10px 10px 0 10px;
+    padding: 11px 10px;
+    box-sizing: border-box;
 }
 
-th:nth-child(1),
-th:nth-child(2) {
-    min-width: 152px;
-    max-width: 152px;
+.table_of_staff th:nth-child(1) {
+    width: 175px;
 }
 
-th:nth-child(3) {
-    min-width: 285px;
-    max-width: 285px;
+.table_of_staff th:nth-child(2) {
+    width: 173px;
 }
 
-th:nth-child(4) {
-    min-width: 180px;
-    max-width: 180px;
+.table_of_staff th:nth-child(3) {
+    width: 308px;
+}
+
+.table_of_staff th:nth-child(4) {
+    width: 198px;
 }

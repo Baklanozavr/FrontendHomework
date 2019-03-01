@@ -1,0 +1,54 @@
+body {
+    font: 100% sans-serif;
+    color: #676565;
+}
+
+label {
+    font-weight: bold;
+}
+
+.input_block {
+    margin: 0 0 0 0;
+    padding: auto;
+}
+
+input {
+    height: 40px;
+}
+
+label,
+input,
+textarea,
+button {
+    display: block;
+    border: none;
+}
+
+.application_title {
+    font-size: 210%;
+    padding: 3px 20px;
+}
+
+.application_form {
+    max-width: 800px;
+    padding: 15px 20px;
+    background-color: #feeed6;
+}
+
+.prompt,
+input::placeholder,
+textarea::placeholder {
+    color: #9e9e9e;
+}
+
+input::placeholder::before {
+    content: "****";
+}
+
+button {
+    margin-left: auto;
+    width: 170px;
+    height: 40px;
+    background-color: #378db2;
+    color: white;
+}
