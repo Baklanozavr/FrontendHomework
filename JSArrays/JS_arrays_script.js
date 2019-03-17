@@ -28,20 +28,21 @@ console.log(firstFiveElements);
 var lastFiveElements = arrayOfRandomNumbers.slice(arrayOfRandomNumbers.length - 5);
 console.log(lastFiveElements);
 
-var sum = 0;
-arrayOfRandomNumbers.forEach(function (element) {
+var sum = arrayOfRandomNumbers.reduce(function (sum, element) {
     if (element % 2 === 0) {
         sum += element;
     }
-});
+    return sum;
+}, 0);
 console.log(sum);
 
 var hundredNumbersArray = getArrayOfGrowingNumbers(1, 100);
+console.log(hundredNumbersArray);
 
-var squaresOfEvensArray = [];
-hundredNumbersArray.forEach(function (element) {
+squaresOfEvensArray = hundredNumbersArray.reduce(function (squaresOfEvensArray, element) {
     if (element % 2 === 0) {
         squaresOfEvensArray.push(element * element);
     }
-});
+    return squaresOfEvensArray;
+}, []);
 console.log(squaresOfEvensArray);
