@@ -18,7 +18,7 @@ var arrayOfRandomNumbers = getArrayOfRandomNumbers(9);
 console.log(arrayOfRandomNumbers);
 
 arrayOfRandomNumbers.sort(function (a, b) {
-    return a - b;
+    return b - a;
 });
 console.log(arrayOfRandomNumbers);
 
