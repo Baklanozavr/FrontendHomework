@@ -1,17 +1,17 @@
-function getArrayOfRandomNumbers(how_many) {
+function getArrayOfRandomNumbers(howMany) {
     var array = [];
-    for (var i = 0; i < how_many; ++i) {
+    for (var i = 0; i < howMany; ++i) {
         array.push(Math.round(Math.random() * 100))
     }
     return array;
 }
 
-function getArrayOfGrowingNumbers(first_element, total_number_of_elements) {
-    var growing_numbers_array = [];
-    for (var i = first_element; i < total_number_of_elements + first_element; ++i) {
-        growing_numbers_array.push(i);
+function getArrayOfGrowingNumbers(firstElement, totalNumberOfElements) {
+    var arrayOfGrowingNumbers = [];
+    for (var i = firstElement; i < totalNumberOfElements + firstElement; ++i) {
+        arrayOfGrowingNumbers.push(i);
     }
-    return growing_numbers_array;
+    return arrayOfGrowingNumbers;
 }
 
 var arrayOfRandomNumbers = getArrayOfRandomNumbers(9);
