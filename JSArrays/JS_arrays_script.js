@@ -28,11 +28,12 @@ console.log(firstFiveElements);
 var lastFiveElements = arrayOfRandomNumbers.slice(arrayOfRandomNumbers.length - 5);
 console.log(lastFiveElements);
 
-var sum = arrayOfRandomNumbers.reduce(function (sum, element) {
+var sum = arrayOfRandomNumbers.reduce(function (currentSum, element) {
+    var newSum = currentSum;
     if (element % 2 === 0) {
-        sum += element;
+        newSum += element;
     }
-    return sum;
+    return newSum;
 }, 0);
 console.log(sum);
 
