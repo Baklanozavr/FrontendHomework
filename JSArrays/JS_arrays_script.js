@@ -40,10 +40,9 @@ console.log(sum);
 var hundredNumbersArray = getArrayOfGrowingNumbers(1, 100);
 console.log(hundredNumbersArray);
 
-squaresOfEvensArray = hundredNumbersArray.reduce(function (squaresOfEvensArray, element) {
-    if (element % 2 === 0) {
-        squaresOfEvensArray.push(element * element);
-    }
-    return squaresOfEvensArray;
-}, []);
+var squaresOfEvensArray = hundredNumbersArray.filter(function (element) {
+    return element % 2 === 0;
+}).map(function (element) {
+    return element * element;
+});
 console.log(squaresOfEvensArray);
