@@ -30,7 +30,7 @@ console.log(lastFiveElements);
 
 var sum = arrayOfRandomNumbers.reduce(function (currentSum, element) {
     if (element % 2 === 0) {
-        currentSum += element;
+        return currentSum + element;
     }
     return currentSum;
 }, 0);
