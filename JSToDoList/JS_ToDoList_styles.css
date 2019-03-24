@@ -1,5 +1,14 @@
-.new-text {
+.new-text, .note {
     width: 300px;
+}
+
+.note {
+    font-weight: normal;
+    text-align: left;
+}
+
+.note::before {
+    content: '• ';
 }
 
 .invalid {

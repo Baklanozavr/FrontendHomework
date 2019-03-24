@@ -1,34 +1,44 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
-    var newTextField = document.querySelector(".new-text");
+    var inputTextField = document.querySelector(".new-text");
     var list = document.querySelector(".list");
 
     var createButton = document.querySelector(".create-button");
     createButton.addEventListener("click", function () {
-        var text = newTextField.value;
+        var text = inputTextField.value;
+
         if (text === "") {
-            newTextField.classList.add("invalid");
+            inputTextField.classList.add("invalid");
             return;
         }
 
-        var li = document.createElement("li");
-        li.innerHTML = "<span></span>\
-        <button class='delete-button' type='button'>Delete</button>\
-        <button class='edit-button' type='button'>Edit</button>";
+        var newNoteArea = document.createElement("tr");
 
-        li.children[0].innerText = text;
-        li.children[1].addEventListener("click", function() {
-            list.removeChild(li);
+        var noteText = document.createElement("th");
+        newNoteArea.appendChild(noteText);
+        var noteDeleteArea = document.createElement("th");
+        newNoteArea.appendChild(noteDeleteArea);
+        var noteEditArea = document.createElement("th");
+        newNoteArea.appendChild(noteEditArea);
+
+        noteText.innerText = text;
+        noteText.classList.add("note");
+
+        noteDeleteArea.innerHTML = "<button class='delete-button' type='button'>Delete</button>";
+        noteDeleteArea.firstChild.addEventListener("click", function() {
+            list.removeChild(newNoteArea);
         });
-        li.children[2].addEventListener("click", function() {
+
+        noteEditArea.innerHTML = "<button class='edit-button' type='button'>Edit</button>";
+        noteEditArea.firstChild.addEventListener("click", function() {
             //TODO
         });
 
-        list.appendChild(li);
-        newTextField.value = "";
+        list.appendChild(newNoteArea);
+        inputTextField.value = "";
     });
-    newTextField.addEventListener("focus", function () {
-        newTextField.classList.remove("invalid");
+    inputTextField.addEventListener("focus", function () {
+        inputTextField.classList.remove("invalid");
     })
 });
