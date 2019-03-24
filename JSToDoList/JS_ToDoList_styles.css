@@ -2,11 +2,15 @@
     width: 300px;
 }
 
+.edit-text {
+    border: none;
+    width: 290px;
+}
+
 .note {
     font-weight: normal;
     text-align: left;
 }
-
 .note::before {
     content: '• ';
 }
@@ -14,7 +18,17 @@
 .invalid {
     border-color: red;
 }
-
 .invalid::placeholder {
     color: red;
+}
+
+.create-button {
+    width: 120px;
+}
+.delete-button, .edit-button, .confirm-button, .cancel-button {
+    width: 60px;
+}
+
+.ninja {
+    visibility: hidden;
 }
