@@ -1,0 +1,11 @@
+.new-text {
+    width: 300px;
+}
+
+.invalid {
+    border-color: red;
+}
+
+.invalid::placeholder {
+    color: red;
+}
