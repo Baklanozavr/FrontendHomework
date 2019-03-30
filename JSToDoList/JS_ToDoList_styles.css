@@ -2,17 +2,17 @@
     width: 300px;
 }
 
-.edit-text {
-    border: none;
-    width: 290px;
-}
-
 .note {
     font-weight: normal;
     text-align: left;
 }
 .note::before {
     content: '• ';
+}
+
+.edit-text {
+    border: none;
+    width: 290px;
 }
 
 .invalid {
@@ -25,10 +25,8 @@
 .create-button {
     width: 120px;
 }
-.delete-button, .edit-button, .confirm-button, .cancel-button {
+.usual-button {
+    box-sizing: border-box;
     width: 60px;
-}
-
-.ninja {
-    visibility: hidden;
+    height: 100%;
 }

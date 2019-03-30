@@ -4,87 +4,96 @@ document.addEventListener("DOMContentLoaded", function () {
     var inputTextField = document.querySelector(".new-text");
     var list = document.querySelector(".list");
     var createButton = document.querySelector(".create-button");
-    var editArea = document.querySelector(".edit-text");
-
-    function swipeVisibility(element1, element2) {
-        var temp = element1.style.display;
-        element1.style.display = element2.style.display;
-        element2.style.display = temp;
-    }
 
     createButton.addEventListener("click", function () {
         var text = inputTextField.value;
-
         if (text === "") {
             inputTextField.classList.add("invalid");
             return;
         }
-
-        var newNoteArea = document.createElement("tr");
-
-        var noteText = document.createElement("th");
-        newNoteArea.appendChild(noteText);
-        var noteDeleteArea = document.createElement("th");
-        noteDeleteArea.style.display = "inline";
-        newNoteArea.appendChild(noteDeleteArea);
-        var noteEditConfirmArea = document.createElement("th");
-        noteEditConfirmArea.innerHTML = "<button class='confirm-button' type='button'>Confirm</button>";
-        noteEditConfirmArea.style.display = "none";
-        newNoteArea.appendChild(noteEditConfirmArea);
-        var noteEditButtonArea = document.createElement("th");
-        noteEditButtonArea.style.display = "inline";
-        newNoteArea.appendChild(noteEditButtonArea);
-        var cancelButtonArea = document.createElement("th");
-        cancelButtonArea.innerHTML = "<button class='cancel-button' type='button'>Cancel</button>";
-        cancelButtonArea.style.display = "none";
-        newNoteArea.append(cancelButtonArea);
-
-        noteText.innerText = text;
-        noteText.classList.add("note");
-
-        noteDeleteArea.innerHTML = "<button class='delete-button' type='button'>Delete</button>";
-        noteDeleteArea.firstChild.addEventListener("click", function () {
-            list.removeChild(newNoteArea);
-        });
-
-        noteEditButtonArea.innerHTML = "<button class='edit-button' type='button'>Edit</button>";
-        noteEditButtonArea.firstChild.addEventListener("click", function () {
-            var originalText = noteText.innerText;
-
-            editArea.value = originalText;
-            noteText.innerText = "";
-            noteText.append(editArea);
-            editArea.focus();
-
-            swipeVisibility(noteDeleteArea, noteEditConfirmArea);
-            swipeVisibility(noteEditButtonArea, cancelButtonArea);
-
-            function hideEditInputAndSetText(text) {
-                noteText.innerText = text;
-                document.querySelector(".ninja").append(editArea);
-                swipeVisibility(noteDeleteArea, noteEditConfirmArea);
-                swipeVisibility(noteEditButtonArea, cancelButtonArea);
-            }
-
-            function leaveOriginalText() {
-                hideEditInputAndSetText(originalText);
-            }
-
-            editArea.addEventListener("blur", leaveOriginalText);
-            noteEditConfirmArea.firstChild.addEventListener("mouseenter", function () {
-                editArea.removeEventListener("blur", leaveOriginalText);
-            });
-            noteEditConfirmArea.firstChild.addEventListener("mouseleave", function () {
-                editArea.addEventListener("blur", leaveOriginalText);
-            });
-
-            noteEditConfirmArea.firstChild.addEventListener("click", function () {
-                hideEditInputAndSetText(editArea.value);
-            });
-        });
-
-        list.appendChild(newNoteArea);
         inputTextField.value = "";
+
+        var newNoteRow = document.createElement("tr");
+        list.appendChild(newNoteRow);
+
+        var textArea = document.createElement("th");
+        textArea.classList.add("note");
+        newNoteRow.appendChild(textArea);
+        var noteText = document.createElement("span");
+        noteText.innerText = text;
+        textArea.appendChild(noteText);
+        var editArea = document.createElement("input");
+        editArea.classList.add("edit-text");
+        editArea.value = text;
+        textArea.appendChild(editArea);
+
+        var firstButtonArea = document.createElement("th");
+        newNoteRow.appendChild(firstButtonArea);
+        var editButton = document.createElement("button");
+        editButton.classList.add("usual-button");
+        editButton.innerText = "Edit";
+        firstButtonArea.appendChild(editButton);
+        var confirmButton = document.createElement("button");
+        confirmButton.classList.add("usual-button");
+        confirmButton.innerText = "Confirm";
+        firstButtonArea.appendChild(confirmButton);
+
+        var secondButtonArea = document.createElement("th");
+        newNoteRow.appendChild(secondButtonArea);
+        var deleteButton = document.createElement("button");
+        deleteButton.classList.add("usual-button");
+        deleteButton.innerText = "Delete";
+        secondButtonArea.appendChild(deleteButton);
+        var cancelButton = document.createElement("button");
+        cancelButton.classList.add("usual-button");
+        cancelButton.innerText = "Cancel";
+        secondButtonArea.appendChild(cancelButton);
+
+        switchEditOff();
+
+        editButton.addEventListener("click", function () {
+            text = noteText.innerText;
+            noteText.innerText = "";
+            editArea.value = text;
+            switchEditOn();
+        });
+
+        confirmButton.addEventListener("mouseleave", function () {
+            editArea.addEventListener("blur", mouseOutOfEditButtonListener);
+        });
+        confirmButton.addEventListener("mouseenter", function () {
+            editArea.removeEventListener("blur", mouseOutOfEditButtonListener);
+        });
+        confirmButton.addEventListener("click", function () {
+            noteText.innerText = editArea.value;
+            switchEditOff();
+        });
+
+        deleteButton.addEventListener("click", function () {
+            list.removeChild(newNoteRow);
+        });
+
+        var mouseOutOfEditButtonListener = function () {
+            noteText.innerText = text;
+            switchEditOff();
+        };
+
+        function switchEditOn() {
+            editArea.style.display = "inline";
+            editButton.style.display = "none";
+            deleteButton.style.display = "none";
+            confirmButton.style.display = "block";
+            cancelButton.style.display = "block";
+            editArea.focus();
+        }
+
+        function switchEditOff() {
+            editArea.style.display = "none";
+            editButton.style.display = "block";
+            deleteButton.style.display = "block";
+            confirmButton.style.display = "none";
+            cancelButton.style.display = "none";
+        }
     });
 
     inputTextField.addEventListener("focus", function () {
