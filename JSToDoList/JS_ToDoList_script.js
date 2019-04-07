@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var newNoteRow = document.createElement("tr");
         list.appendChild(newNoteRow);
 
-        var textArea = document.createElement("th");
+        var textArea = document.createElement("td");
         textArea.classList.add("note");
         newNoteRow.appendChild(textArea);
         var noteText = document.createElement("span");
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         editArea.value = text;
         textArea.appendChild(editArea);
 
-        var firstButtonArea = document.createElement("th");
+        var firstButtonArea = document.createElement("td");
         newNoteRow.appendChild(firstButtonArea);
         var editButton = document.createElement("button");
         editButton.classList.add("usual-button");
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         confirmButton.innerText = "Confirm";
         firstButtonArea.appendChild(confirmButton);
 
-        var secondButtonArea = document.createElement("th");
+        var secondButtonArea = document.createElement("td");
         newNoteRow.appendChild(secondButtonArea);
         var deleteButton = document.createElement("button");
         deleteButton.classList.add("usual-button");

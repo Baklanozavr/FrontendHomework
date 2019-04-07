@@ -1,4 +1,26 @@
-.new-text, .note {
+body {
+    font: 110% "Open Sans", sans-serif;
+    color: #656565;
+    text-align: center;
+}
+.table {
+    width: 500px;
+    margin: auto;
+}
+.table td {
+    box-sizing: border-box;
+    padding: 5px 5px;
+}
+
+.application_title {
+    margin: 0.35em;
+    font-size: 1.67em;
+}
+
+.new-text {
+    width: 290px;
+}
+.note {
     width: 300px;
 }
 
@@ -22,11 +44,20 @@
     color: red;
 }
 
+.usual-button, .create-button {
+    box-sizing: border-box;
+    height: 100%;
+    margin-left: auto;
+    background-color: #378db2;
+    color: white;
+    font-weight: bold;
+}
+.usual-button:hover, .create-button:hover {
+    background: #489fc3;
+}
 .create-button {
-    width: 120px;
+    width: 190px;
 }
 .usual-button {
-    box-sizing: border-box;
-    width: 60px;
-    height: 100%;
+    width: 90px;
 }
