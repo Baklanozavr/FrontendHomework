@@ -36,26 +36,27 @@ $(function () {
 
         var firstButtonArea = $("<td></td>")
             .appendTo(newNoteRow);
-        var editButton = $("<button>Edit</button>");
+        var editButton = $("<button>Edit</button>")
+            .addClass("usual-button")
+            .appendTo(firstButtonArea);
         var confirmButton = $("<button>Confirm</button>")
-            .add(editButton)
             .addClass("usual-button")
             .appendTo(firstButtonArea);
 
         var secondButtonArea = $("<td></td>")
             .appendTo(newNoteRow);
-        var deleteButton = $("<button>Delete</button>");
+        var deleteButton = $("<button>Delete</button>")
+            .addClass("usual-button")
+            .appendTo(secondButtonArea);
         var cancelButton = $("<button>Cancel</button>")
-            .add(deleteButton)
             .addClass("usual-button")
             .appendTo(secondButtonArea);
 
         switchEditOff();
 
-        editButton.click(function (event) {
-            console.log("edit");
-            text = noteText.val();
-            noteText.val("");
+        editButton.click(function () {
+            text = noteText.text();
+            noteText.text("");
             editArea.val(text);
             switchEditOn();
         });
@@ -67,8 +68,7 @@ $(function () {
             editArea.off("blur", mouseOutOfEditButtonListener);
         });
         confirmButton.click(function () {
-            console.log("confirm");
-            noteText.val(editArea.val());
+            noteText.text(editArea.val());
             switchEditOff();
         });
 
@@ -77,7 +77,7 @@ $(function () {
         });
 
         var mouseOutOfEditButtonListener = function () {
-            noteText.val(text);
+            noteText.text(text);
             switchEditOff();
         };
 
