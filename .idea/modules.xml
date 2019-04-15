@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/JSObjects/JSObjects.iml" filepath="$PROJECT_DIR$/JSObjects/JSObjects.iml" />
       <module fileurl="file://$PROJECT_DIR$/JSTemperatureConverter/JSTemperatureConverter.iml" filepath="$PROJECT_DIR$/JSTemperatureConverter/JSTemperatureConverter.iml" />
       <module fileurl="file://$PROJECT_DIR$/JSToDoList/JSToDoList.iml" filepath="$PROJECT_DIR$/JSToDoList/JSToDoList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JS_underscore/JS_underscore.iml" filepath="$PROJECT_DIR$/JS_underscore/JS_underscore.iml" />
       <module fileurl="file://$PROJECT_DIR$/jQueryToDoList/jQueryToDoList.iml" filepath="$PROJECT_DIR$/jQueryToDoList/jQueryToDoList.iml" />
     </modules>
   </component>
