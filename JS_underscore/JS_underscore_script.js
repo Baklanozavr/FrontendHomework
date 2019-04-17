@@ -30,8 +30,8 @@ var people = getArrayOfRandomPeople(10);
 console.log(people);
 
 var averageAge = _.reduce(people, function (memo, person) {
-    return memo + person.age / people.length
-}, 0);
+    return memo + person.age
+}, 0) / people.length;
 console.log(averageAge);
 
 var listOfPeopleBetween20And30 = _.chain(people)
@@ -43,5 +43,5 @@ var listOfPeopleBetween20And30 = _.chain(people)
 console.log(listOfPeopleBetween20And30);
 
 _.each(people, function (person) {
-    _.extend(person, {"fullName" : person.name + " " + person.lastName});
+    person.fullName = person.name + " " + person.lastName;
 });
