@@ -4,58 +4,79 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="Vue_ToDoList_styles.css">
     <title>TODO List</title>
 </head>
 <body>
-<h1 class="application_title">TODO List</h1>
 
-<div id="noteList">
-    <div class="header">
-        <input type="text"
-               v-model="inputText"
-               placeholder="Print text here">
-        <button class="btn btn-outline-info"
-                type="button"
-                @click="addNote">
-            Add
-        </button>
-    </div>
-
+<div id="noteList" class="container">
+    <h1 class="application_title">TODO List</h1>
     <ul class="list-group">
+        <li class="list-group-item">
+            <div class="input-group">
+                <input class="form-control"
+                       type="text"
+                       v-model="inputText"
+                       placeholder="Print text here">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-info"
+                            type="button"
+                            @click="addNote">
+                        Add
+                    </button>
+                </div>
+            </div>
+        </li>
         <note-li v-for="note in notes"
                  :key="note.id"
                  :note="note"
                  @remove-note-by-id="removeNoteById"
-                 @change-note-by-id="changeNoteById">
+                 @change-note-by-id="changeNoteById"
+        >
         </note-li>
     </ul>
 </div>
 
 <script id="note-tr-template" type="text/x-template">
     <li class="list-group-item">
-        <template v-if="isEditNow">
-
-            <td>
-                <input type="text" v-model:value="draftNote">
-            </td>
-            <td>
-                <button class="btn btn-outline-secondary" type="button" @click="changeThisNote">Confirm</button>
-            </td>
-            <td>
-                <button class="btn btn-outline-dark" type="button" @click="cancelChanges">Cancel</button>
-            </td>
-        </template>
-        <template v-else>
-            <td>
-                {{note.text}}
-            </td>
-            <td>
-                <button class="btn btn-outline-secondary" type="button" @click="editThisNote">Edit</button>
-            </td>
-            <td>
-                <button class="btn btn-outline-dark" type="button" @click="deleteThisNote">Delete</button>
-            </td>
-        </template>
+        <div class="input-group">
+            <input class="form-control"
+                   type="text"
+                   ref="draftInput"
+                   v-model="draftNote"
+                   :readonly="!isEditNow"
+                   @blur="cancelChangesIfPossible">
+            <template v-if="isEditNow">
+                <div class="input-group-append"
+                     @mouseenter="switchConfirmationPermission"
+                     @mouseleave="switchConfirmationPermission">
+                    <button class="btn btn-outline-secondary"
+                            type="button"
+                            @click="changeThisNote">
+                        Confirm
+                    </button>
+                    <button class="btn btn-outline-secondary"
+                            type="button"
+                            @click="cancelChanges">
+                        Cancel
+                    </button>
+                </div>
+            </template>
+            <template v-else>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary"
+                            type="button"
+                            @click="editThisNote">
+                        Edit
+                    </button>
+                    <button class="btn btn-outline-secondary"
+                            type="button"
+                            @click="deleteThisNote">
+                        Delete
+                    </button>
+                </div>
+            </template>
+        </div>
     </li>
 </script>
 

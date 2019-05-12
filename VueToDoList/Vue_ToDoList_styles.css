@@ -1,0 +1,15 @@
+.application_title {
+    text-align: center;
+}
+
+.btn {
+    width: 80px;
+}
+
+.btn-outline-info {
+    width: 160px;
+}
+
+.form-control:read-only {
+    background-color: white;
+}

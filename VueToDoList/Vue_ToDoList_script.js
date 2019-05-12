@@ -2,15 +2,22 @@ Vue.component("note-li", {
     props: ["note"],
     data: function () {
         return {
-            draftNote: "",
-            isEditNow: false
+            draftNote: this.note.text,
+            isEditNow: false,
+            isReadyToConfirm: true
         };
     },
     template: "#note-tr-template",
     methods: {
         cancelChanges: function () {
-            this.draftNote = "";
+            this.draftNote = this.note.text;
             this.isEditNow = false;
+        },
+        cancelChangesIfPossible: function () {
+            if(!this.isReadyToConfirm) {
+                console.log("blur");
+                this.cancelChanges();
+            }
         },
         changeThisNote: function () {
             this.$emit("change-note-by-id", this.note.id, this.draftNote);
@@ -22,6 +29,11 @@ Vue.component("note-li", {
         editThisNote: function () {
             this.draftNote = this.note.text;
             this.isEditNow = true;
+            this.isReadyToConfirm = true;
+            this.$refs.draftInput.focus();
+        },
+        switchConfirmationPermission: function () {
+            this.isReadyToConfirm = !this.isReadyToConfirm;
         }
     }
 });
@@ -44,6 +56,7 @@ new Vue({
             });
             this.inputText = "";
             ++this.counter;
+            this.$emit("blur");
         },
         changeNoteById: function (id, draft) {
             this.notes = this.notes.map(function (element) {
