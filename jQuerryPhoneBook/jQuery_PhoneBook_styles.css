@@ -1,0 +1,63 @@
+body {
+    font: 110% "Open Sans", sans-serif;
+    color: #656565;
+}
+
+.application_title, .header {
+    text-align: center;
+}
+.application_title {
+    margin: 0.35em;
+    font-size: 1.67em;
+}
+
+.header, .table td {
+    box-sizing: border-box;
+    padding: 5px 5px;
+}
+.table {
+    width: 500px;
+    margin: auto;
+}
+
+.note {
+    width: 300px;
+    font-weight: normal;
+    text-align: left;
+}
+.note::before {
+    content: '• ';
+}
+
+.new-text {
+    width: 290px;
+}
+.edit-text {
+    border: none;
+    width: 95%;
+}
+
+.invalid {
+    border-color: red;
+}
+.invalid::placeholder {
+    color: red;
+}
+
+.usual-button, .create-button {
+    box-sizing: border-box;
+    height: 100%;
+    margin-left: auto;
+    background-color: #378db2;
+    color: white;
+    font-weight: bold;
+}
+.usual-button:hover, .create-button:hover {
+    background: #489fc3;
+}
+.create-button {
+    width: 190px;
+}
+.usual-button {
+    width: 90px;
+}
