@@ -13,3 +13,10 @@
 .form-control:read-only {
     background-color: white;
 }
+
+.invalid {
+    border-color: red;
+}
+.invalid::placeholder {
+    color: red;
+}

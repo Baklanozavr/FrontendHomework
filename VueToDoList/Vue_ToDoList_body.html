@@ -15,9 +15,11 @@
         <li class="list-group-item">
             <div class="input-group">
                 <input class="form-control"
+                       :class="{ invalid: isInputDataInvalid }"
                        type="text"
                        v-model="inputText"
-                       placeholder="Print text here">
+                       placeholder="Print text here"
+                       @focus="cleanInputClass">
                 <div class="input-group-append">
                     <button class="btn btn-outline-info"
                             type="button"
@@ -30,8 +32,8 @@
         <note-li v-for="note in notes"
                  :key="note.id"
                  :note="note"
-                 @remove-note-by-id="removeNoteById"
-                 @change-note-by-id="changeNoteById">
+                 @remove-note="removeNote"
+                 @change-note="changeNote">
         </note-li>
     </ul>
 </div>
@@ -40,10 +42,12 @@
     <li class="list-group-item">
         <div class="input-group">
             <input class="form-control"
+                   :class="{ invalid: isInputDataInvalid }"
                    type="text"
                    ref="draftInput"
                    v-model="draftNote"
                    :readonly="!isEditNow"
+                   placeholder="Print text here"
                    @blur="cancelChangesIfPossible">
             <template v-if="isEditNow">
                 <div class="input-group-append"
